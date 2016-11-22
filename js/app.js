@@ -6,6 +6,8 @@
  * jQuery.
  */
 
+var globEntries = [];
+
 // The names and URLs to all of the feeds we'd like available.
 var allFeeds = [
     {
@@ -67,6 +69,7 @@ function init() {
                   */
                  entries.forEach(function(entry) {
                      container.append(entryTemplate(entry));
+                     globEntries.push(entry);
                  });
 
                  if (cb) {
@@ -130,6 +133,5 @@ $(function() {
      */
     menuIcon.on('click', function() {
         $('body').toggleClass('menu-hidden');
-        runJasmine();
     });
 }());
