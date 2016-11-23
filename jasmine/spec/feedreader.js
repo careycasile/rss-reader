@@ -76,12 +76,12 @@ $(function () {
 
                 if (menuStatus === true) {
                     console.log('true turning false, showing turning hidden');
-                    //expect(menuStatus).toBe(true);
+                    expect(menuStatus).toBe(true);
                     menuStatus = false;
 
                 } else if (menuStatus === false) {
                     console.log('false turning true, hidden turning visiible');
-                    //expect(menuStatus).toBe(false); 
+                    expect(menuStatus).toBe(false); 
                     menuStatus = true;
 
                 }
@@ -124,7 +124,6 @@ $(function () {
         beforeEach(function (done) {
             loadFeed(0, function () {
                 firstValue = allFeeds[0];
-                console.log(firstValue);
                 loadFeed(1, function () {
                     secondValue = loadFeed[1];
                     done();
