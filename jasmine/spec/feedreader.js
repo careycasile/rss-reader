@@ -34,7 +34,9 @@ $(function() {
          */
          it('loops through to check URLs are defined', function(){
             for(var x = 0; x < allFeeds.length; x++) {
+                console.log(allFeeds[x].url.length);
                 expect(allFeeds[x].url).not.toBe(undefined);
+                expect(allFeeds[x].url.length).toBeGreaterThan(0);
             }
          });
 
@@ -46,6 +48,7 @@ $(function() {
         it('loops through to check names are defined', function(){
             for(var x = 0; x < allFeeds.length; x++) {
                 expect(allFeeds[x].name).not.toBe(undefined);
+                expect(allFeeds[x].name.length).toBeGreaterThan(0);
             }
         });
     });
@@ -68,15 +71,26 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
 
-        it('menu is hidden when not clicked', function(){
-            expect(menuDefault).toBe(false);
-        });
+        it('menu is hidden when not clicked and visibible when clicked', function(){
 
-        it('menu shows after click', function() {
+            var menuStatus = menuDefault;
+
             $('.menu-icon-link').click(function() {
-                expect(menuDefault).toBe(true);
-                console.log(true);
+
+                if (menuStatus === true) {
+                    console.log('true turning false, showing turning hidden');
+                    expect(menuStatus).toBe(true);
+                    menuStatus = false;
+
+                } else if (menuStatus === false) {
+                    console.log('false turning true, hidden turning visiible'); 
+                    expect(menuStatus).toBe(false); 
+                    menuStatus = true; 
+              
+                }
+
             });
+
         });
 
     });
@@ -95,9 +109,8 @@ $(function() {
             loadFeed(0, done);
         });
 
-        it('feed list has one or more items', function(done) {
+        it('feed list has one or more items', function() {
             expect($('.feed a')).not.toBe(undefined);
-            done();
         });
     });
 
