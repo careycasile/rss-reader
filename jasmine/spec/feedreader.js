@@ -52,14 +52,14 @@ $(function () {
 
     describe('The Menu', function () {
         /* COMPLETED/TODO: Write a new test suite named "The menu" */
-        var menuDefault = $('body').hasClass('slide-menu');
+        var menuDefault = $('body').hasClass('menu-hidden');
         /* COMPLETED/TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
         it('menu is hidden by default', function () {
-            expect(menuDefault).toBe(false);
+            expect(menuDefault).toBe(true);
         });
 
         /* COMPLETED/TODO: Write a test that ensures the menu changes
@@ -72,19 +72,15 @@ $(function () {
 
             var menuStatus = menuDefault;
 
-            $('.menu-icon-link').click(function () {
+            $('.menu-icon-link').click(function() {
 
-                if (menuStatus === true) {
-                    console.log('true turning false, showing turning hidden');
-                    expect(menuStatus).toBe(true);
-                    menuStatus = false;
+                expect($('body').hasClass('menu-hidden')).toBe(true);
 
-                } else if (menuStatus === false) {
-                    console.log('false turning true, hidden turning visiible');
-                    expect(menuStatus).toBe(false); 
-                    menuStatus = true;
+            });
 
-                }
+            $('.menu-icon-link').click(function() {
+
+                expect($('body').hasClass('menu-hidden')).toBe(false);
 
             });
 
@@ -123,9 +119,9 @@ $(function () {
 
         beforeEach(function (done) {
             loadFeed(0, function () {
-                firstValue = allFeeds[0];
+                firstValue = $('.feed .entry').text();
                 loadFeed(1, function () {
-                    secondValue = loadFeed[1];
+                    secondValue = $('.feed .entry').text();
                     done();
                 });
             });
