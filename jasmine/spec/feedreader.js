@@ -70,19 +70,13 @@ $(function () {
 
         it('menu is hidden when not clicked and visibible when clicked', function () {
 
-            var menuStatus = menuDefault;
+            //first click
+            $('.menu-icon-link').click();
+            expect($('body').hasClass('menu-hidden')).toBe(true);
 
-            $('.menu-icon-link').click(function() {
-
-                expect($('body').hasClass('menu-hidden')).toBe(true);
-
-            });
-
-            $('.menu-icon-link').click(function() {
-
-                expect($('body').hasClass('menu-hidden')).toBe(false);
-
-            });
+            //second click
+            $('.menu-icon-link').click();
+            expect($('body').hasClass('menu-hidden')).toBe(false);
 
         });
 
