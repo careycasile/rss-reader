@@ -72,11 +72,11 @@ $(function () {
 
             //first click
             $('.menu-icon-link').click();
-            expect($('body').hasClass('menu-hidden')).toBe(true);
+            expect($('body').hasClass('menu-hidden')).toBe(false);
 
             //second click
             $('.menu-icon-link').click();
-            expect($('body').hasClass('menu-hidden')).toBe(false);
+            expect($('body').hasClass('menu-hidden')).toBe(true);
 
         });
 
